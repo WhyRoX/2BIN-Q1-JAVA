@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Objects;
 
 
 public class Pizza implements Iterable<Ingredient> {
@@ -61,6 +62,19 @@ public class Pizza implements Iterable<Ingredient> {
     @Override
     public Iterator<Ingredient> iterator() {
         return ingredients.iterator();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Pizza that = (Pizza) o;
+        return Objects.equals(titre, that.titre);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(titre);
     }
 
     @Override
